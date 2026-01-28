@@ -131,13 +131,13 @@
 
               <li class="nav-header">AKADEMIK</li>
               <li class="nav-item">
-                <a href="./kelas.html" class="nav-link active">
+                <a href="./kelas.html" class="nav-link">
                   <i data-lucide="users"></i>
                   <p>Kelas & Murid</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="presensi.html" class="nav-link">
+                <a href="presensi.html" class="nav-link active">
                   <i data-lucide="calendar"></i>
                   <p>Presensi Siswa</p>
                 </a>
@@ -254,7 +254,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Daftar Murid</h3>
+                    <h3 class="card-title">Daftar Pertemuan</h3>
 
                     <div class="card-tools">
                       <div
@@ -282,70 +282,18 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>Nama Siswa</th>
-                          <th>Status</th>
-                          <th>Tanggal Mulai</th>
+                          <th>Tanggal</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>1</td>
-                          <td>EZRA RAFA DANAR (RAFA)</td>
+                          <td>Pertemuan - 1</td>
+                          <td>09 August 2024</td>
                           <td>
-                            <span
-                              class="badge badge-soft-success badge-pill-custom"
-                              >Aktif</span
-                            >
-                          </td>
-                          <td>05/01/2026</td>
-                          <td>
-                            <button
-                              class="btn btn-xs btn-info"
-                              title="Siswa dan Pengajar"
-                            >
-                              <i data-lucide="info"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>ALEYSHA AYUNINDITA YUSUF (NINDI)</td>
-                          <td>
-                            <span
-                              class="badge badge-soft-danger badge-pill-custom"
-                              >Nonaktif</span
-                            >
-                          </td>
-                          <td>29/02/2025</td>
-                          <td>
-                            <button
-                              class="btn btn-xs btn-info"
-                              title="Siswa dan Pengajar"
-                            >
-                              <i data-lucide="info"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>RIFQI AHMAD AL GHAZALI (AL GHAZALI)</td>
-                          <td>
-                            <span
-                              class="badge badge-soft-success badge-pill-custom"
-                              >Aktif</span
-                            >
-                          </td>
-                          <td>01/02/2026</td>
-                          <td>
-                            <button
-                              class="btn btn-xs btn-info rounded"
-                              title="Siswa dan Pengajar"
-                              data-toggle="modal"
-                              data-target="#detailSiswaPengajar"
-                            >
-                              <i data-lucide="info"></i>
-                            </button>
+                            <a class="btn btn-sm btn-info" title="Detail">
+                              <i class="fa fa-calendar"></i>
+                            </a>
                           </td>
                         </tr>
                       </tbody>
@@ -369,7 +317,7 @@
         <div class="modal-dialog modal-lg modal-content-centered">
           <div class="modal-content card-custom">
             <div class="modal-header">
-              <h4 class="modal-title">Detail Siswa</h4>
+              <h4 class="modal-title">Detail Pertemuan</h4>
               <button
                 type="button"
                 class="close"
@@ -382,38 +330,7 @@
             <div class="modal-body">
               <div class="table-responsive">
                 <table class="table table-borderless">
-                  <tbody>
-                    <tr>
-                      <td>Nama Siswa</td>
-                      <td>:</td>
-                      <td>RIFQI AHMAD AL GHAZALI (AL GHAZALI)</td>
-                    </tr>
-                    <tr>
-                      <td>No Induk</td>
-                      <td>:</td>
-                      <td>20220000106</td>
-                    </tr>
-                    <tr>
-                      <td>Tanggal Mulai</td>
-                      <td>:</td>
-                      <td>05/01/2026</td>
-                    </tr>
-                    <tr>
-                      <td>Hari / Sesi</td>
-                      <td>:</td>
-                      <td>Senin,Kamis (13:00:00 - 14:00:00)</td>
-                    </tr>
-                    <tr>
-                      <td>Ringkasan Nilai</td>
-                      <td>:</td>
-                      <td>75%</td>
-                    </tr>
-                    <tr>
-                      <td>Absensi</td>
-                      <td>:</td>
-                      <td>26/30 Hari</td>
-                    </tr>
-                  </tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
