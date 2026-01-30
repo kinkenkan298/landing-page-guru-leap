@@ -13,95 +13,279 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
     <style>
-      /* --- Custom UI Styling --- */
-      .card-custom {
-        border: 1px solid #e2e8f0;
-        border-radius: 0.75rem;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        background-color: white;
+      /* --- Focus & Detail UX Styling --- */
+
+      body {
+        background-color: #f8f9fa; /* Lebih terang/bersih */
+        font-family: "Source Sans Pro", sans-serif;
+        color: #343a40;
+      }
+
+      .content-wrapper {
+        background-color: #f8f9fa !important;
+      }
+
+      /* 1. Welcoming Header */
+      .welcome-header {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .welcome-text h1 {
+        font-weight: 800;
+        color: #212529;
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+      }
+      .welcome-text p {
+        color: #6c757d;
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      .header-illustration {
+        font-size: 3rem;
+        color: #e9ecef;
+        margin-right: 1rem;
+      }
+
+      /* 2. The Hero Card (Project Style) */
+      .course-card {
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid #f1f3f5;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         margin-bottom: 1.5rem;
-        transition: all 0.2s;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        overflow: hidden;
+        position: relative;
       }
 
-      .card-header-custom {
-        background-color: white;
-        border-bottom: 1px solid #f1f5f9;
-        padding: 1.25rem 1.5rem;
-        border-top-left-radius: 0.75rem !important;
-        border-top-right-radius: 0.75rem !important;
+      .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        border-color: #dee2e6;
       }
 
-      /* Soft Badges */
-      .badge-soft-success {
-        background-color: #dcfce7;
-        color: #166534;
+      /* Colored Left Accent based on status */
+      .card-accent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px;
       }
-      .badge-soft-danger {
-        background-color: #fee2e2;
-        color: #991b1b;
-      }
-      .badge-soft-primary {
-        background-color: #dbeafe;
-        color: #1e40af;
-      }
-      .badge-soft-warning {
-        background-color: #fef9c3;
-        color: #854d0e;
-      }
-      .badge-soft-orange {
-        background-color: #ffedd5;
-        color: #9a3412;
+      .accent-warning {
+        background-color: #fd7e14;
+      } /* Orange */
+      .accent-primary {
+        background-color: #4dabf7;
+      } /* Blue */
+      .accent-success {
+        background-color: #20c997;
+      } /* Teal/Green */
+
+      .card-content {
+        padding: 1.5em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
       }
 
-      .badge-pill-custom {
-        padding: 0.4em 0.8em;
-        font-weight: 600;
+      /* Section A: Course Identity */
+      .course-info {
+        flex: 2;
+        min-width: 300px;
+      }
+      .course-category {
+        text-transform: uppercase;
+        letter-spacing: 1px;
         font-size: 0.75rem;
-        border-radius: 9999px;
+        font-weight: 700;
+        color: #adb5bd;
+        margin-bottom: 0.5rem;
+      }
+      .course-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .course-meta {
+        display: flex;
+        gap: 1.5rem;
+        color: #6c757d;
+        font-size: 0.95rem;
+        margin-top: 1rem;
+      }
+      .course-meta i {
+        color: #ced4da;
+        margin-right: 6px;
       }
 
-      /* Stats Icons */
-      .icon-circle {
-        width: 48px;
-        height: 48px;
+      /* Section B: The Workflow Steps (Timeline) */
+      .course-workflow {
+        flex: 3;
+        min-width: 300px;
+      }
+
+      .workflow-steps {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 0.5rem;
+      }
+      /* Connecting Line */
+      .workflow-steps::before {
+        content: "";
+        position: absolute;
+        top: 14px;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: #e9ecef;
+        z-index: 0;
+      }
+
+      .step {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        flex: 1;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border: 2px solid #dee2e6;
         border-radius: 50%;
+        margin: 0 auto 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.25rem;
+        font-size: 0.75rem;
+        color: #adb5bd;
+        font-weight: bold;
+        transition: all 0.3s;
       }
 
-      /* Table Styling */
-      .table th {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #64748b;
-        border-top: none;
-        border-bottom: 1px solid #e2e8f0;
-        background-color: #f8fafc;
-      }
-      .table td {
-        vertical-align: middle;
-        font-size: 0.875rem;
-        border-top: 1px solid #f1f5f9;
-      }
-      .table-hover tbody tr:hover {
-        background-color: #f1f5f9;
+      .step-label {
+        font-size: 0.75rem;
+        color: #adb5bd;
+        font-weight: 600;
       }
 
-      /* Modal Styling */
-      .modal-content {
-        border-radius: 0.75rem;
+      /* Active/Done States */
+      .step.done .step-circle {
+        background: #20c997;
+        border-color: #20c997;
+        color: white;
+      }
+      .step.done .step-label {
+        color: #20c997;
+      }
+
+      .step.active .step-circle {
+        background: #fff;
+        border-color: #0d6efd;
+        color: #0d6efd;
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+      }
+      .step.active .step-label {
+        color: #0d6efd;
+      }
+
+      /* Section C: Action Area */
+      .course-action {
+        flex: 1;
+        min-width: 150px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+      }
+
+      .btn-hero {
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s;
         border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
-      .detail-section-title {
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 1rem;
-        border-bottom: 2px solid #f1f5f9;
-        padding-bottom: 0.5rem;
+      .btn-hero-primary {
+        background: #0d6efd;
+        color: white;
+      }
+      .btn-hero-primary:hover {
+        background: #0b5ed7;
+        color: rgba(255, 255, 255, 0.8);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(203, 218, 241, 0.2);
+      }
+
+      .btn-hero-warning {
+        background: #fd7e14;
+        color: white;
+      }
+      .btn-hero-warning:hover {
+        background: #e86b02;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(253, 126, 20, 0.2);
+      }
+
+      .btn-hero-success {
+        background: white;
+        color: #198754;
+        border: 2px solid #198754;
+      }
+      .btn-hero-success:hover {
+        background: #198754;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .status-badge {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: #f8f9fa;
+        color: #6c757d;
+      }
+
+      @media (max-width: 992px) {
+        .card-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+        .course-workflow {
+          width: 100%;
+          padding: 1rem 0;
+        }
+        .course-action {
+          width: 100%;
+          align-items: flex-start;
+          flex-direction: row;
+          justify-content: space-between;
+        }
       }
     </style>
   </head>
@@ -199,12 +383,6 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./kalendar.html" class="nav-link">
-                  <i data-lucide="calendar-days"></i>
-                  <p>Kalendar Pendidikan</p>
-                </a>
-              </li>
 
               <li class="nav-header">AKADEMIK</li>
               <li class="nav-item">
@@ -213,7 +391,12 @@
                   <p>Kelas & Murid</p>
                 </a>
               </li>
-
+              <li class="nav-item">
+                <a href="presensi.html" class="nav-link">
+                  <i data-lucide="calendar"></i>
+                  <p>Presensi Siswa</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="./catatan.html" class="nav-link">
                   <i data-lucide="users"></i>
@@ -229,7 +412,7 @@
               <li class="nav-item">
                 <a href="./rapor.html" class="nav-link active">
                   <i data-lucide="notebook-pen"></i>
-                  <p>Rapor</p>
+                  <p>Rekap Rapor Siswa</p>
                 </a>
               </li>
 
@@ -253,14 +436,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Rekap Rapor</h1>
-              </div>
+            <div class="row mb-2 justify-content-end">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Rapor & Absensi</li>
+                  <li class="breadcrumb-item active">Rapor Siswa</li>
                 </ol>
               </div>
             </div>
@@ -271,344 +451,77 @@
         <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <div class="card card-custom h-100 border-left-primary">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
-                  >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Total Siswa
-                      </p>
-                      <h3 class="font-weight-bold mb-0" id="statTotal">883</h3>
-                    </div>
-                    <div class="icon-circle bg-light text-primary">
-                      <i class="fas fa-users"></i>
-                    </div>
+            <div class="welcome-header">
+              <div class="welcome-text">
+                <h1>Halo, Mr. Yusril! 👋</h1>
+                <p>
+                  Anda memiliki <b>2 kelas</b> aktif pada Semester Genap 2025.
+                </p>
+              </div>
+              <div class="header-illustration d-none d-md-block">
+                <i class="fas fa-shapes" style="color: #6366f1"></i>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="card-accent accent-primary"></div>
+              <div class="card-content">
+                <div class="course-info">
+                  <div class="course-category text-primary">
+                    LEAP - Coding Class 2025
+                  </div>
+                  <h2 class="course-title">
+                    Coding 1C Curious Creators Tue 6-7
+                  </h2>
+                  <div class="course-meta">
+                    <span
+                      ><i class="far fa-clock"></i> Selasa 18:00 - 19:00</span
+                    >
+                    <span><i class="fas fa-users"></i> 5 Siswa</span>
+                    <span
+                      ><i class="fas fa-map-marker-alt"></i> LAB KOMPUTER
+                      <span class="badge badge-primary">Hybrid</span></span
+                    >
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <div class="card card-custom h-100">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
+
+                <div class="course-action">
+                  <a
+                    href="rekap-laporan.html"
+                    class="btn btn-hero btn-hero-primary"
                   >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Lulus
-                      </p>
-                      <h3
-                        class="font-weight-bold text-success mb-0"
-                        id="statGraduated"
-                      >
-                        150
-                      </h3>
-                      <small class="text-muted">Siswa</small>
-                    </div>
-                    <div class="icon-circle badge-soft-success">
-                      <i class="fas fa-graduation-cap"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <div class="card card-custom h-100">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
-                  >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Perlu Remedial
-                      </p>
-                      <h3
-                        class="font-weight-bold text-danger mb-0"
-                        id="statRemedial"
-                      >
-                        15
-                      </h3>
-                      <small class="text-muted">Siswa</small>
-                    </div>
-                    <div class="icon-circle badge-soft-danger">
-                      <i class="fas fa-exclamation-circle"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <div class="card card-custom h-100">
-                  <div
-                    class="card-body d-flex justify-content-between align-items-center"
-                  >
-                    <div class="mr-auto">
-                      <p class="text-muted small font-weight-bold mb-1">
-                        Rata-rata Nilai
-                      </p>
-                      <h3 class="font-weight-bold mb-0" id="statAverage">
-                        85.5
-                      </h3>
-                    </div>
-                    <div class="icon-circle badge-soft-primary">
-                      <i class="fas fa-chart-line"></i>
-                    </div>
-                  </div>
+                    Pilih Kelas <i class="fas fa-arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="container-fluid">
-            <div class="card card-custom">
-              <div
-                class="card-header-custom d-flex flex-column flex-md-row justify-content-between align-items-md-center sticky-top bg-white"
-                style="z-index: 10"
-              >
-                <div class="mb-3 mb-md-0">
-                  <h5 class="font-weight-bold mb-1">Daftar Hasil Belajar</h5>
-                  <p class="text-muted small mb-0">
-                    Monitoring status kelulusan dan nilai akhir.
-                  </p>
-                </div>
-                <div class="form-inline">
-                  <!-- Search -->
-                  <div
-                    class="input-group input-group-sm mr-2 mb-2 mb-md-0 shadow-sm"
-                  >
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-white border-right-0"
-                        ><i class="fas fa-search text-muted"></i
-                      ></span>
-                    </div>
-                    <input
-                      type="text"
-                      id="searchInput"
-                      class="form-control border-left-0"
-                      placeholder="Cari Nama / NISN..."
-                    />
+            <div class="course-card">
+              <div class="card-accent accent-primary"></div>
+              <div class="card-content">
+                <div class="course-info">
+                  <div class="course-category text-primary">
+                    LEAP - Coding Class 2025
                   </div>
-                  <!-- Filter -->
-                  <div class="input-group input-group-sm shadow-sm">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text bg-white border-right-0"
-                        ><i class="fas fa-filter text-muted"></i
-                      ></span>
-                    </div>
-                    <select
-                      class="custom-select border-left-0"
-                      id="statusFilter"
-                      style="min-width: 140px"
+                  <h2 class="course-title">
+                    Coding 1C Curious Creators Wed 5-6
+                  </h2>
+                  <div class="course-meta">
+                    <span><i class="far fa-clock"></i> Rabu 17:00 - 18:00</span>
+                    <span><i class="fas fa-users"></i> 8 Siswa</span>
+                    <span
+                      ><i class="fas fa-map-marker-alt"></i> LAB KOMPUTER
+                      <span class="badge badge-primary">Hybrid</span></span
                     >
-                      <option value="all">Semua Status</option>
-                      <option value="Graduated">Lulus</option>
-                      <option value="On Track">On Track</option>
-                      <option value="At Risk">Berisiko</option>
-                      <option value="Remedial">Remedial</option>
-                    </select>
                   </div>
                 </div>
-              </div>
-              <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                  <thead>
-                    <tr>
-                      <th class="pl-4">Nama Siswa</th>
-                      <th>Rombel</th>
-                      <th>Kursus / Tingkatan</th>
-                      <th class="text-center">Rata-rata</th>
-                      <th class="text-center">Peringkat</th>
-                      <th class="text-center">Kehadiran</th>
-                      <th>Status</th>
-                      <th class="text-right pr-4">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody id="studentTableBody">
-                    <tr>
-                      <td class="pl-4">
-                        <div class="font-weight-bold text-dark">
-                          Karen Orlin Alzimah (Karen)
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge badge-light border">
-                          Coding 1C Curious Creators
-                        </span>
-                      </td>
-                      <td class="text-secondary small">
-                        LEAP - Coding Class 2025 / Curious Creators
-                      </td>
-                      <td class="text-center font-weight-bold text-dark">
-                        88.50
-                      </td>
-                      <td class="text-center text-secondary">3 / 32</td>
-                      <td class="text-center text-success font-weight-bold">
-                        95%
-                      </td>
-                      <td>
-                        <span class="badge badge-soft-primary badge-pill-custom"
-                          ><i class="fas fa-chart-line mr-1"></i>On Track</span
-                        >
-                      </td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-primary shadow-sm"
-                          onclick="openDetailModal('1')"
-                          title="Lihat Detail"
-                        >
-                          <i class="fas fa-info-circle"></i> Detail
-                        </button>
-                      </td>
-                    </tr>
 
-                    <tr>
-                      <td class="pl-4">
-                        <div class="font-weight-bold text-dark">
-                          Dimas Anggara Putra
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge badge-light border">
-                          09 GOGO 1 SR2
-                        </span>
-                      </td>
-                      <td class="text-secondary small">
-                        LEAP - General English 2024 / GOGO 1
-                      </td>
-                      <td class="text-center font-weight-bold text-dark">
-                        92.30
-                      </td>
-                      <td class="text-center text-secondary">1 / 30</td>
-                      <td class="text-center text-success font-weight-bold">
-                        98%
-                      </td>
-                      <td>
-                        <span class="badge badge-soft-success badge-pill-custom"
-                          ><i class="fas fa-check-circle mr-1"></i>Lulus</span
-                        >
-                      </td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-primary shadow-sm"
-                          onclick="openDetailModal('2')"
-                          title="Lihat Detail"
-                        >
-                          <i class="fas fa-info-circle"></i> Detail
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="pl-4">
-                        <div class="font-weight-bold text-dark">
-                          Rudi Hartono
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge badge-light border">
-                          46 SO 2 SR3
-                        </span>
-                      </td>
-                      <td class="text-secondary small">
-                        LEAP - General English 2024 / STEP OUT 2
-                      </td>
-                      <td class="text-center font-weight-bold text-dark">
-                        68.20
-                      </td>
-                      <td class="text-center text-secondary">28 / 30</td>
-                      <td class="text-center text-warning font-weight-bold">
-                        85%
-                      </td>
-                      <td>
-                        <span class="badge badge-soft-danger badge-pill-custom"
-                          ><i class="fas fa-exclamation-circle mr-1"></i
-                          >Remedial</span
-                        >
-                      </td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-primary shadow-sm"
-                          onclick="openDetailModal('3')"
-                          title="Lihat Detail"
-                        >
-                          <i class="fas fa-info-circle"></i> Detail
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="pl-4">
-                        <div class="font-weight-bold text-dark">
-                          Siti Nurhaliza
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge badge-light border">
-                          41 WINNER 6 SR3
-                        </span>
-                      </td>
-                      <td class="text-secondary small">
-                        LEAP - General English 2024 / WINNER 6
-                      </td>
-                      <td class="text-center font-weight-bold text-dark">
-                        85.80
-                      </td>
-                      <td class="text-center text-secondary">5 / 32</td>
-                      <td class="text-center text-success font-weight-bold">
-                        96%
-                      </td>
-                      <td>
-                        <span class="badge badge-soft-success badge-pill-custom"
-                          ><i class="fas fa-check-circle mr-1"></i>Lulus</span
-                        >
-                      </td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-primary shadow-sm"
-                          onclick="openDetailModal('4')"
-                          title="Lihat Detail"
-                        >
-                          <i class="fas fa-info-circle"></i> Detail
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="pl-4">
-                        <div class="font-weight-bold text-dark">
-                          Ferry Irawan
-                        </div>
-                      </td>
-                      <td>
-                        <span class="badge badge-light border">
-                          17 GOGO 3 SelK2
-                        </span>
-                      </td>
-                      <td class="text-secondary small">
-                        LEAP - General English 2024 / GOGO 3
-                      </td>
-                      <td class="text-center font-weight-bold text-dark">
-                        71.50
-                      </td>
-                      <td class="text-center text-secondary">22 / 30</td>
-                      <td class="text-center text-warning font-weight-bold">
-                        88%
-                      </td>
-                      <td>
-                        <span class="badge badge-soft-orange badge-pill-custom"
-                          ><i class="fas fa-exclamation-triangle mr-1"></i
-                          >Berisiko</span
-                        >
-                      </td>
-                      <td class="text-right pr-4">
-                        <button
-                          class="btn btn-sm btn-outline-primary shadow-sm"
-                          onclick="openDetailModal('5')"
-                          title="Lihat Detail"
-                        >
-                          <i class="fas fa-info-circle"></i> Detail
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="course-action">
+                  <a
+                    href="rekap-laporan.html"
+                    class="btn btn-hero btn-hero-primary"
+                  >
+                    Pilih Kelas <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -624,12 +537,6 @@
         >
         All rights reserved.
       </footer>
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-      </aside>
-      <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
