@@ -12,115 +12,6 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
-    <style>
-      .bg-blue-soft {
-        background-color: #eff6ff;
-        color: #2563eb;
-      }
-      .text-slate-500 {
-        color: #64748b;
-      }
-      .bg-slate-100 {
-        background-color: #f1f5f9;
-      }
-
-      .badge-success-soft {
-        background-color: rgba(40, 167, 69, 0.1) !important;
-        color: #28a745 !important;
-      }
-      .badge-warning-soft {
-        background-color: rgba(40, 167, 69, 0.1) !important;
-        color: #ffc107 !important;
-      }
-
-      .card-custom {
-        border: 1px solid #e9ecef;
-        border-radius: 0.75rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        background: white;
-        transition: all 0.2s ease;
-      }
-
-      .card-report:hover {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        transform: translateY(-2px);
-      }
-
-      .rounded-xl {
-        border-radius: 0.75rem !important;
-      }
-      .rounded-lg {
-        border-radius: 0.5rem !important;
-      }
-
-      .text-muted-small {
-        font-size: 0.75rem;
-        color: #6c757d;
-      }
-
-      /* Accordion Styling Override */
-      .accordion .card-header {
-        background-color: white;
-        border-bottom: 1px solid #f1f3f5;
-        padding: 1rem 1.25rem;
-      }
-
-      .accordion .btn-link {
-        color: #343a40;
-        text-decoration: none;
-        font-weight: 600;
-        padding: 0;
-      }
-
-      .accordion .btn-link:hover {
-        text-decoration: none;
-      }
-
-      /* Badge Customization */
-      .badge-soft-blue {
-        background-color: #eff6ff;
-        color: #2563eb;
-        font-weight: 500;
-        padding: 0.5em 0.8em;
-      }
-
-      .badge-soft-secondary {
-        background-color: #f1f5f9;
-        color: #475569;
-      }
-
-      /* Avatar Circle */
-      .avatar-circle {
-        width: 32px;
-        height: 32px;
-        background-color: #e2e8f0;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #475569;
-      }
-
-      .avatar-circle-lg {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-        background-color: #eff6ff;
-        color: #2563eb;
-      }
-
-      /* Scroll Area imitation */
-      .scroll-area {
-        max-height: 300px;
-        overflow-y: auto;
-        background-color: #f8f9fa;
-        border: 1px solid #dee2e6;
-        border-radius: 0.375rem;
-        padding: 1rem;
-      }
-    </style>
   </head>
   <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
@@ -244,7 +135,7 @@
               <li class="nav-item">
                 <a href="./rapor.html" class="nav-link">
                   <i data-lucide="notebook-pen"></i>
-                  <p>Rapor</p>
+                  <p>Rekap Rapor Siswa</p>
                 </a>
               </li>
 
@@ -274,8 +165,10 @@
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Laporan kelas</li>
+                  <li class="breadcrumb-item">
+                    <a href="./index.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">Catatan kelas</li>
                 </ol>
               </div>
             </div>
@@ -285,102 +178,60 @@
 
         <!-- Main content -->
         <section class="content">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="table-responsive">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body table-responsive p-3">
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Tanggal</th>
-                          <th>Catatan</th>
-                          <th>Materi Diskusi</th>
-                          <th>Tanggal Periksa</th>
-                          <th>Hasil Konfirmasi</th>
+                          <th>#</th>
+                          <th>Rombel</th>
+                          <th>Program Kursus</th>
+                          <th>Periode</th>
+                          <th>Sesi</th>
+                          <th>Hari</th>
+                          <th>Level</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>07 August 2024</td>
+                          <td>1</td>
+                          <td>Coding 1C Curious Creators Wed 5-6</td>
+                          <td>LEAP - Coding Class 2025</td>
+                          <td>02 Agustus 2024</td>
+                          <td>17:00:00 - 18:00:00</td>
+                          <td>Rabu</td>
+                          <td>TA 25/26</td>
                           <td>
-                            Banyak orang sering merasa bahwa waktu berjalan
-                            terlalu cepat, padahal kenyataannya waktu selalu
-                            konsisten: dua puluh empat jam sehari, tujuh hari
-                            seminggu, dan tiga ratus enam puluh lima hari dalam
-                            setahun, kecuali pada tahun kabisat. Perasaan bahwa
-                            waktu tidak cukup sebenarnya muncul karena kita
-                            tidak mampu mengatur dan memanfaatkannya dengan
-                            baik. Misalnya, ada orang yang terbiasa menunda
-                            pekerjaan dengan alasan lelah, bosan, atau menunggu
-                            momen yang tepat, padahal sebenarnya penundaan itu
-                            justru membuat tugas semakin menumpuk, energi mental
-                            semakin terkuras, dan hasil akhirnya kurang optimal.
-                            Sebaliknya, mereka yang memiliki kebiasaan disiplin
-                            dalam mengatur jadwal, membuat daftar prioritas,
-                            serta berusaha menyelesaikan tugas sesuai rencana,
-                            akan merasa hidup lebih teratur, lebih tenang, dan
-                            lebih produktif. Mengatur waktu tidak selalu berarti
-                            bekerja tanpa henti dari pagi hingga malam,
-                            melainkan juga menyeimbangkan antara pekerjaan,
-                            istirahat, dan aktivitas pribadi seperti olahraga,
-                            hobi, maupun interaksi sosial dengan keluarga dan
-                            teman. Dengan manajemen waktu yang baik, seseorang
-                            bisa menyelesaikan tanggung jawab lebih cepat
-                            sehingga masih memiliki ruang untuk menikmati hidup,
-                            belajar hal baru, atau sekadar beristirahat tanpa
-                            rasa bersalah. Sebuah penelitian juga menunjukkan
-                            bahwa manajemen waktu yang efektif dapat menurunkan
-                            tingkat stres, meningkatkan kualitas tidur, serta
-                            membantu seseorang lebih fokus pada tujuan jangka
-                            panjang. Karena itu, penting bagi kita untuk mulai
-                            membangun kebiasaan kecil seperti membuat jadwal
-                            harian, menentukan target mingguan, dan melakukan
-                            evaluasi bulanan agar bisa mengetahui sejauh mana
-                            pencapaian yang telah diraih. Waktu memang tidak
-                            bisa kita hentikan, tetapi kita bisa
-                            mengendalikannya melalui pilihan, sikap, dan
-                            tindakan setiap hari.
+                            <a
+                              href="./catatan-kelas.html"
+                              class="btn btn-sm btn-info"
+                            >
+                              <i class="fa fa-info-circle"></i>
+                              Lihat Catatan
+                            </a>
                           </td>
-                          <td>apakah yg harus dilakukan</td>
-                          <td>12 January 2026</td>
-                          <td>oke mantap</td>
                         </tr>
                         <tr>
-                          <td>09 August 2024</td>
+                          <td>2</td>
+                          <td>Coding 1C Curious Creators Tue 6-7</td>
+                          <td>LEAP - General English 2024</td>
+                          <td>02 Agustus 2024</td>
+                          <td>15:45:00 - 16:45:00</td>
+                          <td>Selasa</td>
+                          <td>TA 25/26</td>
                           <td>
-                            Sesi ke-25 dihadiri oleh seluruh siswa secara hybird
-                            tepat waktu, kecuali Abhin, Tian, dan Akio
-                            terlambat. Materi hari ini melanjutkan pengerjaan
-                            proyek Trivia game step 14-27 dan presentasi mini
-                            yang berjalan dengan baik. Semua siswa sudah bisa
-                            mengejar materi. Fadhil di tengah pembelajaran
-                            laptopnya tiba-tiba mati karena kehabisan
-                            baterainya. Guru akhirnya menginstruksikan untuk
-                            menggunakan komputer labkom dan laptopnya dicharge.
-                            Guru juga telah menginstruksikan untuk mengecharhe
-                            laptopnya sebelum digunakan di rumahnya
+                            <a
+                              href="./catatan-kelas.html"
+                              class="btn btn-sm btn-info"
+                            >
+                              <i class="fa fa-info-circle"></i>
+                              Lihat Catatan
+                            </a>
                           </td>
-                          <td>-</td>
-                          <td>12 January 2026</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>02 September 2024</td>
-                          <td>
-                            Sesi 5. Semua siswa hadir. Hari ini materinya
-                            selang-seling teori dan praktik properti CSS.
-                            Beberapa siswa akhirnya fokus mengerjakan secara
-                            mandiri diselingi penjelasan guru. Semua siswa dapat
-                            menyelesaikan challenge yang diberikan guru. Guru
-                            meminta beberapa siswa yang selesai duluan untuk
-                            maju ke depan membantu mengetikkan codenya dan guru
-                            menjelaskan. Hari ini Kesler banyak bicara dan
-                            beberapa kali diingatkan soal aturan kelas.
-                          </td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
                         </tr>
                       </tbody>
                     </table>
@@ -411,7 +262,9 @@
     <script src="./js/adminlte.min.js"></script>
 
     <script>
-      lucide.createIcons();
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+      });
     </script>
   </body>
 </html>
