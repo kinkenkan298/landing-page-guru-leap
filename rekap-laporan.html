@@ -10,211 +10,165 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
     />
 
-    <!-- Theme style -->
     <link rel="stylesheet" href="./css/adminlte.min.css" />
 
     <script src="./tinymce/tinymce.min.js" defer></script>
     <script src="./tinymce/jquery.tinymce.min.js" defer></script>
-    <script src="./tinymce/themes/modern/theme.min.js"></script>
+    <script src="./tinymce/themes/modern/theme.min.js" defer></script>
 
     <style>
-      /* --- Focus & Detail UX Styling --- */
+      :root {
+        --bg-body: #f8fafc;
+        --card-border: #e2e8f0;
+      }
 
       body {
-        background-color: #f8f9fa; /* Lebih terang/bersih */
-        font-family: "Source Sans Pro", sans-serif;
-        color: #343a40;
+        background-color: var(--bg-body);
+        color: #1e293b;
       }
 
       .content-wrapper {
-        padding: 20px;
-        background-color: #f8f9fa !important;
+        background-color: var(--bg-body) !important;
+        padding-top: 20px;
       }
 
-      .welcome-header {
-        background: #fff;
+      /* Sticky Header Table */
+      .table-responsive {
+        max-height: 70vh;
+        overflow-y: auto;
+        border-radius: 12px;
+      }
+
+      .table-modern thead th {
+        position: sticky;
+        top: 0;
+        background: #f1f5f9;
+        z-index: 10;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        border: none;
+        padding: 1.25rem 1rem;
+      }
+
+      .table-modern tbody td {
+        vertical-align: middle !important;
+        padding: 1rem;
+        border-bottom: 1px solid #f1f5f9;
+        background: white;
+      }
+
+      /* Progress Bar Section */
+      .progress-container {
+        background: white;
         padding: 1.5rem;
         border-radius: 16px;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        border: 1px solid var(--card-border);
       }
 
-      .welcome-text h1 {
-        font-weight: 800;
-        color: #212529;
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
-      }
-      .welcome-text p {
-        color: #6c757d;
-        font-size: 1rem;
-        margin: 0;
+      .custom-progress {
+        height: 8px;
+        border-radius: 10px;
+        background: #f1f5f9;
       }
 
-      .header-illustration {
-        font-size: 3rem;
-        color: #e9ecef;
-        margin-right: 1rem;
-      }
-
-      /* 2. The Hero Card (Project Style) */
-      .course-card {
-        background: #fff;
-        border-radius: 16px;
-        border: 1px solid #f1f3f5;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        margin-bottom: 1.5rem;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-        border-color: #dee2e6;
-      }
-
-      /* Colored Left Accent based on status */
-      .card-accent {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 6px;
-      }
-      .accent-warning {
-        background-color: #fd7e14;
-      } /* Orange */
-      .accent-primary {
-        background-color: #4dabf7;
-      } /* Blue */
-      .accent-success {
-        background-color: #20c997;
-      } /* Teal/Green */
-
-      .card-content {
-        padding: 1.5em;
+      /* Score Preview Badge Group */
+      .score-summary {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
-        align-items: center;
+        gap: 4px;
+      }
+      .score-tag {
+        font-size: 10px;
+        background: #f1f5f9;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #475569;
+        border: 1px solid #e2e8f0;
       }
 
-      /* Section A: Course Identity */
-      .course-info {
-        flex: 2;
-        min-width: 300px;
-      }
-      .course-category {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #adb5bd;
-        margin-bottom: 0.5rem;
-      }
-      .course-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #212529;
-        margin-bottom: 0.5rem;
-        line-height: 1.3;
-      }
-      .course-meta {
-        display: flex;
-        gap: 1.5rem;
-        color: #6c757d;
-        font-size: 0.95rem;
-        margin-top: 1rem;
-      }
-      .course-meta i {
-        color: #ced4da;
-        margin-right: 6px;
-      }
-
-      /* Section B: The Workflow Steps (Timeline) */
-      .course-workflow {
-        flex: 3;
-        min-width: 300px;
-      }
-
-      /* Section C: Action Area */
-      .course-action {
-        flex: 1;
-        min-width: 150px;
-        text-align: right;
+      /* SIDE DRAWER STYLING */
+      .side-drawer {
+        position: fixed;
+        top: 0;
+        right: -550px;
+        width: 500px;
+        height: 100vh;
+        background: white;
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.1);
+        z-index: 1050;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+      }
+
+      .side-drawer.open {
+        right: 0;
+      }
+
+      .drawer-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+        background: #fff;
+      }
+
+      .drawer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+      }
+
+      .drawer-footer {
+        padding: 1.25rem;
+        border-top: 1px solid #f1f5f9;
+        background: #f8fafc;
+        display: flex;
         gap: 10px;
       }
 
-      .btn-hero {
-        padding: 0.75rem 1.5rem;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        transition: all 0.2s;
-        border: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .btn-hero-primary {
-        background: #0d6efd;
-        color: white;
-      }
-      .btn-hero-primary:hover {
-        background: #0b5ed7;
-        color: rgba(255, 255, 255, 0.8);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(203, 218, 241, 0.2);
-      }
-
-      .btn-hero-warning {
-        background: #fd7e14;
-        color: white;
-      }
-      .btn-hero-warning:hover {
-        background: #e86b02;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(253, 126, 20, 0.2);
-      }
-
-      .btn-hero-success {
-        background: white;
-        color: #198754;
-        border: 2px solid #198754;
-      }
-      .btn-hero-success:hover {
-        background: #198754;
-        color: white;
-        transform: translateY(-2px);
-      }
-      .assessment-group {
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #e9ecef;
+      .drawer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(2px);
+        z-index: 1040;
+        display: none;
       }
-      .assessment-title {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #007bff;
-        color: #343a40;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+      .drawer-overlay.active {
+        display: block;
+      }
+
+      /* Status Helper */
+      .status-dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+      .dot-success {
+        background-color: var(--success);
+      }
+      .dot-warning {
+        background-color: #f59e0b;
+      }
+
+      .form-control-modern {
+        border-radius: 0.75rem;
+        border: 1px solid #e2e8f0;
+        padding: 0.75rem;
+        transition: all 0.2s;
+      }
+
+      .form-control-modern:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
       }
 
       .dialogbody {
@@ -258,6 +212,14 @@
       .modal-content {
         border-radius: 0.75rem;
         border: none;
+      }
+
+      .text-muted {
+        color: #6c757d;
+        font-size: 12px;
+      }
+      .small {
+        font-size: 12px !important;
       }
       @media (max-width: 992px) {
         .card-content {
@@ -415,9 +377,7 @@
               </li>
             </ul>
           </nav>
-          <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
@@ -427,9 +387,12 @@
           <div class="container-fluid">
             <div class="row mb-2 justify-content-end">
               <div class="col-sm-6">
+                <h1 class="h2">Rekap Rapor Siswa</h1>
+              </div>
+              <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Rapor Siswa</li>
+                  <li class="breadcrumb-item active">Rekap Rapor Siswa</li>
                 </ol>
               </div>
             </div>
@@ -502,11 +465,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <table
-                  id="tb"
-                  class="table table-bordered table-hover dt-responsive nowrap"
-                  style="width: 100%"
-                >
+                <table class="table" style="width: 100%">
                   <thead>
                     <tr>
                       <th>Nama Siswa</th>
@@ -576,8 +535,85 @@
                       <td>
                         <button
                           class="btn btn-primary btn-block"
+                          onclick="openDrawer('EZRA RAFA DANAR', 0)"
+                        >
+                          <i class="fas fa-edit"></i> Input penilian
+                        </button>
+                        <button
+                          class="btn btn-secondary btn-block"
                           data-toggle="modal"
-                          data-target="#penilainRaporSiswaModal"
+                          data-target="#previewRaporModal"
+                        >
+                          <i class="fas fa-print"></i> Preview Rapor
+                        </button>
+                        <button class="btn btn-info btn-block">
+                          <i class="far fa-sticky-note"></i> Catatan /
+                          Keterangan
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>NAURA NURU HAMIDAH (NAURA)</td>
+                      <td>
+                        <table class="table table-sm table-striped">
+                          <tbody>
+                            <tr>
+                              <td>Class Participation</td>
+                              <td>:</td>
+                              <td>a</td>
+                            </tr>
+                            <tr>
+                              <td>Discipline</td>
+                              <td>:</td>
+                              <td>a</td>
+                            </tr>
+                            <tr>
+                              <td>Attitude</td>
+                              <td>:</td>
+                              <td>a</td>
+                            </tr>
+                            <tr>
+                              <td>Programming Skills</td>
+                              <td>:</td>
+                              <td>20</td>
+                            </tr>
+                            <tr>
+                              <td>Critical Thinking & Problem Solving</td>
+                              <td>:</td>
+                              <td>30</td>
+                            </tr>
+                            <tr>
+                              <td>Creativity & Innovation</td>
+                              <td>:</td>
+                              <td>30</td>
+                            </tr>
+                            <tr>
+                              <td>Communication</td>
+                              <td>:</td>
+                              <td>30</td>
+                            </tr>
+                            <tr>
+                              <td>Ethics and Responsibility</td>
+                              <td>:</td>
+                              <td>10</td>
+                            </tr>
+                            <tr>
+                              <td>Grade</td>
+                              <td>:</td>
+                              <td>60</td>
+                            </tr>
+                            <tr>
+                              <td>Comments</td>
+                              <td>:</td>
+                              <td>mantap</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td>
+                        <button
+                          class="btn btn-primary btn-block"
+                          onclick="openDrawer('EZRA RAFA DANAR', 0)"
                         >
                           <i class="fas fa-edit"></i> Input penilian
                         </button>
@@ -600,149 +636,6 @@
             </div>
           </div>
         </section>
-      </div>
-
-      <div class="modal fade" id="penilainRaporSiswaModal">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Penilaian Rapor Siswa</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="form">
-                <input type="hidden" id="kode" name="kode" />
-                <input type="hidden" id="idsiswa" name="idsiswa" />
-                <input type="hidden" id="idjadwal" name="idjadwal" />
-
-                <div id="wadah_parameter">
-                  <div class="form-row row-cols-2">
-                    <div class="form-group col">
-                      <label class="form-label">Class Participation</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Class Participation"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Discipline</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Discipline"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Attitude</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Attitude"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Programming Skills</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Programming Skills"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label"
-                        >Critical Thinking & Problem Solving</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Critical Thinking & Problem Solving"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Creativity & nnovation</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Creativity & Innovation"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Communication</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Communication"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Ethics and Responsibility</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Ethics and Responsibility"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Grade</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Grade"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                    <div class="form-group col">
-                      <label class="form-label">Comments</label
-                      ><input
-                        type="text"
-                        class="form-control"
-                        placeholder="Comments"
-                        autocomplete="off"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-default"
-                data-dismiss="modal"
-              >
-                Tutup
-              </button>
-              <button id="btnSave" type="button" class="btn btn-primary">
-                Simpan
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="modal fade" id="previewRaporModal">
@@ -779,15 +672,14 @@
                     readonly=""
                   >
 Selamat siang,
+Berikut kami kirimkan E-Rapor/E-Sertifikat Kemitraan - B2B Ekskul Coding 1 untuk:
+Nama : coba raport 2 (raport 2)
+Level : TA 25/26
 
-                Berikut kami kirimkan E-Rapor/E-Sertifikat Kemitraan - B2B Ekskul Coding 1 untuk:
-                Nama : coba raport 2 (raport 2)
-                Level : TA 25/26
+Selamat telah menyelesaikan keseluruhan materi dan aktivitas di level ini dengan baik.
 
-                Selamat telah menyelesaikan keseluruhan materi dan aktivitas di level ini dengan baik.
-
-                Terima kasih,
-                Salam LKP LEAP English & Digital Class Surabaya</textarea
+Terima kasih,
+Salam LKP LEAP English & Digital Class Surabaya</textarea
                   >
                 </div>
               </div>
@@ -798,11 +690,15 @@ Selamat siang,
                   type="hidden"
                   id="idsiswa_cetak_rapor"
                   name="idsiswa_cetak_rapor"
+                  readonly=""
+                  value="QXlKUVhRbVprWGRaeDJJTjE4alVkdz09"
                 />
                 <input
                   type="hidden"
                   id="idjadwal_cetak_rapor"
                   name="idjadwal_cetak_rapor"
+                  readonly=""
+                  value="cXd0THZYR2hDbVp0cG5zZTJxWmZqZz09"
                 />
                 <div class="row">
                   <div class="column1">
@@ -816,134 +712,132 @@ Selamat siang,
                         font-size: 12px;
                       "
                     >
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          <img
-                            id="logoreport"
-                            src="img/logoreport.jpg"
-                            alt="logo"
-                            style="width: 200px; height: auto"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td
-                          colspan="2"
-                          style="text-align: center; font-size: 18px"
-                        >
-                          ACCREDITATION LEVEL B
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          Operational Licence : 421.9 / 41 / A / IO-SP /
-                          436.7.15 / 2022
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          Nilek : 05209.1.0593 / 09
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          NPSN : K0560112
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          Rungkut Asri Tengah VII / 51, Surabaya 60293
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          Phone : (031) 870 5464 - 0813 3538 1619
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          www.leapsurabaya.sch.id
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td
-                          colspan="2"
-                          style="text-align: center; font-size: 18px"
-                        >
-                          <u>OUR VISION</u>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: center">
-                          <p style="margin-left: 30px; margin-right: 30px">
-                            LEAP vision's is to become a sustainable and
-                            professional educational institution that
-                            prioritizes equality, quality, and ease of access to
-                            learning through the synergy of human roles,
-                            technology, and community collaboration to create a
-                            positive educational environment for educators and
-                            learners
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">
-                          <hr style="border: 1px solid black" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td
-                          colspan="2"
-                          style="text-align: center; font-size: 18px"
-                        >
-                          <u>STUDENT PROGRESS REPORT</u>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: left; width: 100px">
-                          &nbsp;&nbsp;NAME
-                        </td>
-                        <td style="text-align: left" id="nama_siswa">
-                          &nbsp;&nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: left">&nbsp;&nbsp;LEVEL</td>
-                        <td style="text-align: left" id="level_siswa">
-                          &nbsp;&nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: left">&nbsp;&nbsp;TEACHER</td>
-                        <td style="text-align: left" id="nama_guru">
-                          &nbsp;&nbsp;
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" style="text-align: left">&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: left">&nbsp;&nbsp;TERM</td>
-                        <td style="text-align: left" id="term">&nbsp;&nbsp;</td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            <img
+                              id="logoreport"
+                              src="img/logoreport.jpg"
+                              alt="logo"
+                              style="width: 200px; height: auto"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td
+                            colspan="2"
+                            style="text-align: center; font-size: 18px"
+                          >
+                            ACCREDITATION LEVEL B
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            Operational Licence : 421.9 / 41 / A / IO-SP /
+                            436.7.15 / 2022
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            Nilek : 05209.1.0593 / 09
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            NPSN : K0560112
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            Rungkut Asri Tengah VII / 51, Surabaya 60293
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            Phone : (031) 870 5464 - 0813 3538 1619
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            www.leapsurabaya.sch.id
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td
+                            colspan="2"
+                            style="text-align: center; font-size: 18px"
+                          >
+                            <u>OUR VISION</u>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: center">
+                            <p style="margin-left: 30px; margin-right: 30px">
+                              LEAP vision's is to become a sustainable and
+                              professional educational institution that
+                              prioritizes equality, quality, and ease of access
+                              to learning through the synergy of human roles,
+                              technology, and community collaboration to create
+                              a positive educational environment for educators
+                              and learners
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <hr style="border: 1px solid black" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            colspan="2"
+                            style="text-align: center; font-size: 18px"
+                          >
+                            <u>STUDENT PROGRESS REPORT</u>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="text-align: left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: left; width: 100px">
+                            &nbsp;&nbsp;NAME
+                          </td>
+                          <td style="text-align: left" id="nama_siswa">
+                            QO QO ()
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="text-align: left">&nbsp;&nbsp;LEVEL</td>
+                          <td style="text-align: left" id="level_siswa">
+                            TA 25/26
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="text-align: left">&nbsp;&nbsp;TEACHER</td>
+                          <td style="text-align: left" id="nama_guru">
+                            Qorin Rahmaniyah, S.Pd., Habibah Melyna, Graciela
+                            Evanda Ronadi, S.Kom., Akun Data PPDK
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: left">&nbsp;&nbsp;TERM</td>
+                          <td style="text-align: left" id="term">
+                            Kemitraan - Ekskul Coding (Al Muslim)
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                   </div>
                   <div class="column2">
@@ -967,14 +861,24 @@ Selamat siang,
                                 </td>
                               </tr>
                               <tr>
-                                <td colspan="2" style="text-align: left"></td>
+                                <td colspan="2" style="text-align: left">
+                                  &nbsp;
+                                </td>
                               </tr>
                               <tr>
                                 <td style="text-align: left">
-                                  POSSIBLE TOTAL SESSIONS 30
+                                  POSSIBLE TOTAL
+                                  SESSIONS&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;30
                                 </td>
                                 <td style="text-align: right">
-                                  SESSIONS ATTENDED 3
+                                  SESSIONS
+                                  ATTENDED&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;23
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" style="text-align: left">
+                                  The student has attended 22 sessions to meet
+                                  the minimum 75% attendance requirement.
                                 </td>
                               </tr>
                               <tr>
@@ -988,7 +892,7 @@ Selamat siang,
                       </tr>
                       <tr>
                         <td style="text-align: left">DATE</td>
-                        <td style="text-align: left">30-01-2026</td>
+                        <td style="text-align: left">02-02-2026</td>
                         <td style="text-align: left"></td>
                         <td style="text-align: left"></td>
                       </tr>
@@ -1026,6 +930,155 @@ Selamat siang,
         </div>
       </div>
 
+      <!-- Side Drawer -->
+      <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+      <div class="side-drawer" id="gradeDrawer">
+        <div
+          class="drawer-header d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5 class="font-weight-bold mb-0" id="drawerTitle">
+              Penilaian Siswa
+            </h5>
+            <small class="text-muted" id="studentStatus">Siswa 2 dari 32</small>
+          </div>
+          <button type="button" class="close" onclick="closeDrawer()">
+            &times;
+          </button>
+        </div>
+
+        <div class="drawer-body">
+          <form id="form">
+            <input type="hidden" id="kode" name="kode" />
+            <input type="hidden" id="idsiswa" name="idsiswa" />
+            <input type="hidden" id="idjadwal" name="idjadwal" />
+
+            <div id="wadah_parameter">
+              <div class="form-row row-cols-2">
+                <div class="form-group col">
+                  <label class="small">Class Participation</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Class Participation"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Discipline</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Discipline"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Attitude</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Attitude"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Programming Skills</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Programming Skills"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small"
+                    >Critical Thinking & Problem Solving</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Critical Thinking & Problem Solving"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Creativity & nnovation</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Creativity & Innovation"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Communication</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Communication"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Ethics and Responsibility</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Ethics and Responsibility"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Grade</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Grade"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+                <div class="form-group col">
+                  <label class="small">Comments</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    placeholder="Comments"
+                    autocomplete="off"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="drawer-footer">
+          <button
+            class="btn btn-primary flex-grow-1 py-3 font-weight-bold shadow-sm"
+            style="border-radius: 12px"
+            onclick="saveAndNext()"
+          >
+            Simpan & Siswa Berikutnya <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+          <button
+            class="btn btn-light border py-3 px-4"
+            style="border-radius: 12px"
+            onclick="closeDrawer()"
+          >
+            Batal
+          </button>
+        </div>
+      </div>
+
       <footer class="main-footer">
         <strong
           >Copyright &copy; 2022-2026
@@ -1038,21 +1091,62 @@ Selamat siang,
     </div>
 
     <script src="./plugins/jquery/jquery.min.js"></script>
-    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <script src="./js/adminlte.min.js"></script>
 
     <script>
-      $(document).ready(function () {
-        tinymce.init({
-          selector: "textarea.tiny",
-          height: 200,
-          menubar: false,
-        });
-        lucide.createIcons();
-      });
+      let currentStudentIndex = 0;
+
+      const students = [
+        "EZRA RAFA DANAR",
+        "NAURA NURU HAMIDAH",
+        "AFIQAH HASNA ZAFIRA",
+        "CATHERINE BELLVANIA TAN",
+        "RAISA AQILA PAHLEV",
+        "RAIHANENDRA WIBOWO",
+      ];
+
+      function openDrawer(name, index) {
+        currentStudentIndex = index;
+        document.getElementById("drawerTitle").innerText = name;
+        document.getElementById("studentStatus").innerText =
+          `Siswa ${index + 1} dari ${students.length + 1}`;
+        document.getElementById("gradeDrawer").classList.add("open");
+        document.getElementById("overlay").classList.add("active");
+
+        // Reset form scroll to top
+        document.querySelector(".drawer-body").scrollTop = 0;
+      }
+
+      function closeDrawer() {
+        document.getElementById("gradeDrawer").classList.remove("open");
+        document.getElementById("overlay").classList.remove("active");
+      }
+
+      function saveAndNext() {
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+
+          if (currentStudentIndex < students.length) {
+            const nextIndex = currentStudentIndex + 1;
+            const nextName = students[currentStudentIndex];
+            openDrawer(nextName, nextIndex);
+          } else {
+            closeDrawer();
+            alert("Semua siswa dalam daftar ini telah selesai!");
+          }
+        }, 600);
+      }
+      lucide.createIcons();
     </script>
   </body>
 </html>
