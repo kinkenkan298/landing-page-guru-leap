@@ -537,18 +537,40 @@
                           class="btn btn-primary btn-block"
                           onclick="openDrawer('EZRA RAFA DANAR', 0)"
                         >
-                          <i class="fas fa-edit"></i> Input penilian
+                          <i class="fas fa-edit"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Input penilian</span
+                          >
                         </button>
                         <button
                           class="btn btn-secondary btn-block"
                           data-toggle="modal"
                           data-target="#previewRaporModal"
                         >
-                          <i class="fas fa-print"></i> Preview Rapor
+                          <i class="fas fa-print"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Preview Rapor</span
+                          >
                         </button>
-                        <button class="btn btn-info btn-block">
-                          <i class="far fa-sticky-note"></i> Catatan /
-                          Keterangan
+                        <button
+                          class="btn btn-info btn-block"
+                          data-toggle="modal"
+                          data-target="#catatanRemidiModal"
+                        >
+                          <i class="far fa-sticky-note"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Catatan Remidi</span
+                          >
+                        </button>
+                        <button
+                          class="btn btn-success btn-block"
+                          data-toggle="modal"
+                          data-target="#catatanKetuntasanModal"
+                        >
+                          <i class="fa fa-clipboard-list"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Catatan Ketuntasan</span
+                          >
                         </button>
                       </td>
                     </tr>
@@ -615,18 +637,40 @@
                           class="btn btn-primary btn-block"
                           onclick="openDrawer('EZRA RAFA DANAR', 0)"
                         >
-                          <i class="fas fa-edit"></i> Input penilian
+                          <i class="fas fa-edit"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Input penilian</span
+                          >
                         </button>
                         <button
                           class="btn btn-secondary btn-block"
                           data-toggle="modal"
                           data-target="#previewRaporModal"
                         >
-                          <i class="fas fa-print"></i> Preview Rapor
+                          <i class="fas fa-print"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Preview Rapor</span
+                          >
                         </button>
-                        <button class="btn btn-info btn-block">
-                          <i class="far fa-sticky-note"></i> Catatan /
-                          Keterangan
+                        <button
+                          class="btn btn-info btn-block"
+                          data-toggle="modal"
+                          data-target="#catatanRemidiModal"
+                        >
+                          <i class="far fa-sticky-note"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Catatan Remidi</span
+                          >
+                        </button>
+                        <button
+                          class="btn btn-success btn-block"
+                          data-toggle="modal"
+                          data-target="#catatanKetuntasanModal"
+                        >
+                          <i class="fa fa-clipboard-list"></i>
+                          <span class="d-none d-md-inline-block"
+                            >Catatan Ketuntasan</span
+                          >
                         </button>
                       </td>
                     </tr>
@@ -930,6 +974,128 @@ Salam LKP LEAP English & Digital Class Surabaya</textarea
         </div>
       </div>
 
+      <div class="modal fade" tabindex="-1" id="catatanRemidiModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Catatan Remidi</h5>
+              <button type="button" data-dismiss="modal" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="flex flex-column">
+                <form action="" id="form-catatan-remidi">
+                  <div class="form-group">
+                    <label for="">Nama Rombel</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="Coding 1C Curious Creators Tue 6-7"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="">Tahun Ajaran</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="2024/2025"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="">Keterangan Remidi</label>
+                    <select class="custom-select">
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="midtest">Mid Test</option>
+                      <option value="finaltest">Final Test</option>
+                    </select>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <label for="">Nilai Sebelum Remidi</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        required
+                        placeholder="Nilai sebelum"
+                      />
+                    </div>
+                    <div class="col">
+                      <label for="">Nilai Setelah Remidi</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        required
+                        placeholder="Nilai Setelah"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="button" class="btn btn-primary">
+                Simpan Catatan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="catatanKetuntasanModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Catatan Ketuntasan</h5>
+              <button type="button" data-dismiss="modal" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <select class="custom-select" id="menu-ketuntasan">
+                <option selected disabled>Pilih</option>
+                <option value="1">Naik Level</option>
+                <option value="2">Tidak naik level</option>
+                <option value="3">Lulus</option>
+                <option value="4">Special Case</option>
+              </select>
+              <div class="mt-3" id="form-ketuntasan">
+                <form action="">
+                  <div class="form-group">
+                    <label for="ketuntasan-catatan">Keterangan</label>
+                    <textarea
+                      class="form-control"
+                      id="ketuntasan-catatan"
+                    ></textarea>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="button" class="btn btn-primary">
+                Simpan Catatan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Side Drawer -->
       <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
       <div class="side-drawer" id="gradeDrawer">
@@ -1146,7 +1312,17 @@ Salam LKP LEAP English & Digital Class Surabaya</textarea
           }
         }, 600);
       }
-      lucide.createIcons();
+      $(document).ready(function () {
+        lucide.createIcons();
+        $("#form-ketuntasan").hide();
+        $("#menu-ketuntasan").change(function () {
+          if ($(this).val() === "4") {
+            $("#form-ketuntasan").show();
+          } else {
+            $("#form-ketuntasan").hide();
+          }
+        });
+      });
     </script>
   </body>
 </html>

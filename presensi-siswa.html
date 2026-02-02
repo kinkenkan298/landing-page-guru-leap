@@ -329,6 +329,12 @@
                         <div class="card">
                           <div class="card-header">
                             <h2 class="card-title">Data Siswa</h2>
+                            <div class="card-tools">
+                              <button class="btn btn-info btn-sm">
+                                <i class="fa fa-check"></i>
+                                CHECK ALL
+                              </button>
+                            </div>
                           </div>
                           <div class="card-body">
                             <div class="table-responsive-lg">
@@ -358,7 +364,6 @@
                                         <option value="hadir">Hadir</option>
                                         <option value="sakit">Sakit</option>
                                         <option value="izin">Izin</option>
-                                        <option value="dll">Dll</option>
                                       </select>
                                     </td>
                                     <td></td>
@@ -388,18 +393,23 @@
                                         </option>
                                         <option value="sakit">Sakit</option>
                                         <option value="izin">Izin</option>
-                                        <option value="dll">Dll</option>
                                       </select>
                                     </td>
                                     <td></td>
                                     <td>
                                       <button
-                                        class="btn btn-sm btn-outline-primary"
+                                        class="btn btn-sm btn-outline-warning"
                                         data-toggle="modal"
                                         data-target="#modalCatatanSiswa"
                                       >
                                         <i class="fa fa-user-pen"></i>
-                                        Catatan Siswa
+                                        Edit Catatan
+                                      </button>
+                                      <button
+                                        class="btn btn-sm btn-outline-danger"
+                                      >
+                                        <i class="fa fa-trash"></i>
+                                        Hapus Catatan
                                       </button>
                                     </td>
                                   </tr>
@@ -418,7 +428,6 @@
                                         </option>
                                         <option value="sakit">Sakit</option>
                                         <option value="izin">Izin</option>
-                                        <option value="dll">Dll</option>
                                       </select>
                                     </td>
                                     <td>Sangat Rajin Sekali</td>
@@ -436,6 +445,35 @@
                                       >
                                         <i class="fa fa-trash"></i>
                                         Hapus Catatan
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Varellino Wildantara</td>
+                                    <td></td>
+                                    <td>
+                                      <select
+                                        name="presensi"
+                                        id="presensi"
+                                        class="custom-select"
+                                      >
+                                        <option value="" selected disabled>
+                                          Pilih
+                                        </option>
+                                        <option value="hadir">Hadir</option>
+                                        <option value="sakit">Sakit</option>
+                                        <option value="izin">Izin</option>
+                                      </select>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                      <button
+                                        class="btn btn-sm btn-outline-primary"
+                                        data-toggle="modal"
+                                        data-target="#modalCatatanSiswa"
+                                      >
+                                        <i class="fa fa-user-pen"></i>
+                                        Catatan Siswa
                                       </button>
                                     </td>
                                   </tr>
