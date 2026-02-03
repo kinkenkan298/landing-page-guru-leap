@@ -170,6 +170,12 @@
                   <p>Rekap Rapor Siswa</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="./ttd.html" class="nav-link">
+                  <i data-lucide="signature"></i>
+                  <p>Tanda Tangan Guru</p>
+                </a>
+              </li>
 
               <li class="nav-header">PENGATURAN</li>
 
@@ -374,7 +380,6 @@
                                         data-target="#modalCatatanSiswa"
                                       >
                                         <i class="fa fa-user-pen"></i>
-                                        Catatan Siswa
                                       </button>
                                     </td>
                                   </tr>
@@ -395,21 +400,24 @@
                                         <option value="izin">Izin</option>
                                       </select>
                                     </td>
-                                    <td></td>
+                                    <td>
+                                      Siswa Sangat Bersemangat membahasa materi
+                                      baru
+                                    </td>
                                     <td>
                                       <button
                                         class="btn btn-sm btn-outline-warning"
                                         data-toggle="modal"
                                         data-target="#modalCatatanSiswa"
+                                        title="Edit Catatan"
                                       >
-                                        <i class="fa fa-user-pen"></i>
-                                        Edit Catatan
+                                        <i class="fa fa-pencil"></i>
                                       </button>
                                       <button
                                         class="btn btn-sm btn-outline-danger"
+                                        title="Hapus Catatan"
                                       >
                                         <i class="fa fa-trash"></i>
-                                        Hapus Catatan
                                       </button>
                                     </td>
                                   </tr>
@@ -432,20 +440,22 @@
                                     </td>
                                     <td>Sangat Rajin Sekali</td>
                                     <td>
-                                      <button
-                                        class="btn btn-sm btn-outline-warning"
-                                        data-toggle="modal"
-                                        data-target="#modalCatatanSiswa"
-                                      >
-                                        <i class="fa fa-user-pen"></i>
-                                        Edit Catatan
-                                      </button>
-                                      <button
-                                        class="btn btn-sm btn-outline-danger"
-                                      >
-                                        <i class="fa fa-trash"></i>
-                                        Hapus Catatan
-                                      </button>
+                                      <div class="btn-group">
+                                        <button
+                                          class="btn btn-sm btn-outline-warning"
+                                          data-toggle="modal"
+                                          data-target="#modalCatatanSiswa"
+                                          title="Edit Catatan"
+                                        >
+                                          <i class="fa fa-pencil"></i>
+                                        </button>
+                                        <button
+                                          class="btn btn-sm btn-outline-danger"
+                                          title="Hapus catatan"
+                                        >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
@@ -457,10 +467,10 @@
                                         id="presensi"
                                         class="custom-select"
                                       >
-                                        <option value="" selected disabled>
-                                          Pilih
+                                        <option value="" disabled>Pilih</option>
+                                        <option value="hadir" selected>
+                                          Hadir
                                         </option>
-                                        <option value="hadir">Hadir</option>
                                         <option value="sakit">Sakit</option>
                                         <option value="izin">Izin</option>
                                       </select>
@@ -471,9 +481,9 @@
                                         class="btn btn-sm btn-outline-primary"
                                         data-toggle="modal"
                                         data-target="#modalCatatanSiswa"
+                                        title="Tambah Catatan"
                                       >
                                         <i class="fa fa-user-pen"></i>
-                                        Catatan Siswa
                                       </button>
                                     </td>
                                   </tr>
