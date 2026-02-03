@@ -180,6 +180,34 @@
         margin-bottom: 0cm;
         height: 780px;
       }
+      /* Soft Badges */
+      .badge-soft-success {
+        background-color: #dcfce7;
+        color: #166534;
+      }
+      .badge-soft-danger {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+      .badge-soft-primary {
+        background-color: #dbeafe;
+        color: #1e40af;
+      }
+      .badge-soft-warning {
+        background-color: #fef9c3;
+        color: #854d0e;
+      }
+      .badge-soft-orange {
+        background-color: #ffedd5;
+        color: #9a3412;
+      }
+
+      .badge-pill-custom {
+        padding: 0.4em 0.8em;
+        font-weight: 600;
+        font-size: 0.75rem;
+        border-radius: 9999px;
+      }
 
       .column {
         float: left;
@@ -367,6 +395,13 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="./ttd.html" class="nav-link">
+                  <i data-lucide="signature"></i>
+                  <p>Tanda Tangan Guru</p>
+                </a>
+              </li>
+
               <li class="nav-header">PENGATURAN</li>
 
               <li class="nav-item">
@@ -453,7 +488,11 @@
               <div class="card-header">
                 <h3 class="card-title">Daftar Siswa</h3>
                 <div class="card-tools">
-                  <button class="btn btn-primary btn-sm">
+                  <button
+                    class="btn btn-primary btn-sm"
+                    data-toggle="modal"
+                    data-target="#previewSiswaRemidi"
+                  >
                     <i class="fas fa-users"></i> Preview Siswa Remidi
                   </button>
                   <button class="btn btn-success btn-sm">
@@ -1242,6 +1281,85 @@ Salam LKP LEAP English & Digital Class Surabaya</textarea
           >
             Batal
           </button>
+        </div>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="previewSiswaRemidi">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Daftar siswa remidi</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nama Siswa</th>
+                      <th>Rombel</th>
+                      <th>Tahun Ajaran</th>
+                      <th>Keterangan Remidi</th>
+                      <th>Nilai Sebelum</th>
+                      <th>Nilai Sesudah</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>EZRA RAFA DANAR</td>
+                      <td>Coding 1C Curious Creators Tue 6-7</td>
+                      <td>2025/2026</td>
+                      <td>
+                        <span class="badge badge-primary badge-pill"
+                          >Mid Test</span
+                        >
+                      </td>
+                      <td>
+                        <span class="badge badge-soft-danger badge-pill-custom"
+                          >59</span
+                        >
+                      </td>
+                      <td>
+                        <span class="badge badge-soft-primary badge-pill-custom"
+                          >85</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>NAURA NURU HAMIDAH</td>
+                      <td>Coding 1C Curious Creators Tue 6-7</td>
+                      <td>2025/2026</td>
+                      <td>
+                        <span class="badge badge-success badge-pill"
+                          >Final Test</span
+                        >
+                      </td>
+                      <td>
+                        <span class="badge badge-soft-warning badge-pill-custom"
+                          >70</span
+                        >
+                      </td>
+                      <td>
+                        <span class="badge badge-soft-success badge-pill-custom"
+                          >90</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

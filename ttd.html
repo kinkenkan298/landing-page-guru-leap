@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Leap</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css" />
+
+    <link rel="stylesheet" href="./plugins/fullcalendar/main.css" />
+    <link rel="stylesheet" href="./css/adminlte.min.css" />
+    <style>
+      .canvas-container {
+        width: 100%;
+        border: 2px solid #6c757d;
+        border-radius: 8px;
+        background: #fff;
+        position: relative;
+      }
+
+      .canvas-ttd {
+        display: block;
+        width: 100%;
+        height: 300px;
+        cursor: crosshair;
+      }
+
+      .canvas-placeholder {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #adb5bd;
+        font-size: 1.25rem;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .btn-canvas-action {
+        min-width: 120px;
+      }
+
+      .canvas-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+              <i class="fas fa-bars"></i>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header"
+                >15 Notifications</span
+              >
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-users mr-2"></i> 8 friend requests
+                <span class="float-right text-muted text-sm">12 hours</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="fas fa-file mr-2"></i> 3 new reports
+                <span class="float-right text-muted text-sm">2 days</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer"
+                >See All Notifications</a
+              >
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="./index.html" class="brand-link">
+          <img
+            src="./img/leap.png"
+            alt="AdminLTE Logo"
+            class="brand-image elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Leap Surabaya</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="./img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="User Image"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">M Rahmat Muttaqin</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i data-lucide="layout-dashboard"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-header">AKADEMIK</li>
+
+              <li class="nav-item">
+                <a href="./kelas.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Kelas & Murid</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./presensi.html" class="nav-link">
+                  <i data-lucide="calendar"></i>
+                  <p>Presensi Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./catatan.html" class="nav-link">
+                  <i data-lucide="users"></i>
+                  <p>Catatan Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./catatan-guru.html" class="nav-link">
+                  <i data-lucide="square-user-round"></i>
+                  <p>Catatan Kelas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./ttd.html" class="nav-link">
+                  <i data-lucide="signature"></i>
+                  <p>Tanda Tangan Guru</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./rapor.html" class="nav-link">
+                  <i data-lucide="notebook-pen"></i>
+                  <p>Rekap Rapor Siswa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./ttd.html" class="nav-link active">
+                  <i data-lucide="signature"></i>
+                  <p>Tanda Tangan Guru</p>
+                </a>
+              </li>
+
+              <li class="nav-header">PENGATURAN</li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>Pengaturan</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Tanda Tangan Guru</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item active">Tanda Tangan Guru</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-signature mr-2"></i>
+                      Tanda Tangan Digital
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <!-- Preview existing signature -->
+                    <div class="row mb-4">
+                      <div class="col-12 col-md-6">
+                        <label class="form-label font-weight-bold"
+                          >Tanda Tangan Saat Ini</label
+                        >
+                        <div class="text-center p-3 border rounded bg-light">
+                          <img
+                            src="./img/template-ttd.png"
+                            alt="Tanda Tangan"
+                            class="img-fluid"
+                            style="max-height: 100px"
+                            id="currentSignature"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label font-weight-bold"
+                          >Upload Tanda Tangan</label
+                        >
+                        <div class="input-group mb-3">
+                          <div class="custom-file">
+                            <input
+                              type="file"
+                              name="ttd"
+                              id="ttd"
+                              class="custom-file-input"
+                              accept="image/*"
+                            />
+                            <label for="ttd" class="custom-file-label"
+                              >Pilih File...</label
+                            >
+                          </div>
+                          <div class="input-group-append">
+                            <button
+                              class="btn btn-secondary"
+                              type="button"
+                              id="btnUpload"
+                              title="Upload Tanda Tangan"
+                            >
+                              <i class="fas fa-upload"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-label font-weight-bold">
+                            Pilih Kelas yang Diajarkan
+                          </label>
+                          <div
+                            class="border rounded p-2"
+                            style="max-height: 200px; overflow-y: auto"
+                          >
+                            <div class="custom-control custom-checkbox mb-2">
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="selectAll"
+                              />
+                              <label
+                                class="custom-control-label font-weight-bold"
+                                for="selectAll"
+                              >
+                                Pilih Semua
+                              </label>
+                            </div>
+                            <hr class="my-2" />
+                            <div class="row">
+                              <div
+                                class="col-12 d-flex flex-wrap"
+                                style="gap: 20px"
+                              >
+                                <div class="custom-control custom-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    class="custom-control-input class-checkbox"
+                                    id="PP89"
+                                    value="PP89"
+                                  />
+                                  <label class="custom-control-label" for="PP89"
+                                    >Coding 1C Curious Creators Wed 5-6</label
+                                  >
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                  <input
+                                    type="checkbox"
+                                    class="custom-control-input class-checkbox"
+                                    id="PP90"
+                                    value="PP90"
+                                  />
+                                  <label class="custom-control-label" for="PP90"
+                                    >Coding 1C Curious Creators Tue 6-7</label
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr />
+
+                    <!-- Full-width Canvas Section -->
+                    <div class="row">
+                      <div class="col-12">
+                        <label class="form-label font-weight-bold mb-2">
+                          <i class="fas fa-pen mr-1"></i>
+                          Buat Tanda Tangan Manual
+                        </label>
+                        <div class="canvas-container">
+                          <span
+                            class="canvas-placeholder"
+                            id="canvasPlaceholder"
+                          >
+                            Gambar tanda tangan Anda di sini
+                          </span>
+                          <canvas
+                            id="canvasTTDManual"
+                            class="canvas-ttd"
+                          ></canvas>
+                        </div>
+
+                        <!-- Canvas Action Buttons -->
+                        <div class="canvas-actions">
+                          <button
+                            id="btnClear"
+                            type="button"
+                            class="btn btn-danger btn-canvas-action"
+                          >
+                            <i class="fas fa-eraser mr-1"></i>
+                            Hapus
+                          </button>
+                          <button
+                            id="btnSave"
+                            type="button"
+                            class="btn btn-success btn-canvas-action"
+                          >
+                            <i class="fas fa-save mr-1"></i>
+                            Simpan
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="main-footer">
+        <strong
+          >Copyright &copy; 2022-2026
+          <a href="https://leapsurabaya.sch.id/"
+            >Leap English and Digital Class</a
+          >.</strong
+        >
+        All rights reserved.
+      </footer>
+
+      <aside class="control-sidebar control-sidebar-dark"></aside>
+    </div>
+
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <script src="./plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script src="./plugins/fullcalendar/main.js"></script>
+    <script src="./plugins/moment/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@5.1.3/dist/signature_pad.umd.min.js"></script>
+
+    <script src="./js/adminlte.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        lucide.createIcons();
+
+        // Canvas and SignaturePad setup
+        const canvas = document.getElementById("canvasTTDManual");
+        const placeholder = document.getElementById("canvasPlaceholder");
+
+        // Resize canvas to fill container while maintaining proper drawing
+        function resizeCanvas() {
+          const container = canvas.parentElement;
+          const ratio = Math.max(window.devicePixelRatio || 1, 1);
+
+          canvas.width = container.offsetWidth * ratio;
+          canvas.height = 300 * ratio;
+          canvas.style.width = container.offsetWidth + "px";
+          canvas.style.height = "300px";
+
+          const ctx = canvas.getContext("2d");
+          ctx.scale(ratio, ratio);
+
+          // Clear the canvas after resize
+          signaturePad.clear();
+        }
+
+        const signaturePad = new SignaturePad(canvas, {
+          backgroundColor: "rgba(255, 255, 255, 0)",
+          penColor: "#000000",
+          minWidth: 1,
+          maxWidth: 3,
+        });
+
+        // Initial resize
+        resizeCanvas();
+
+        // Resize on window resize
+        window.addEventListener("resize", resizeCanvas);
+
+        // Hide placeholder when drawing starts
+        signaturePad.addEventListener("beginStroke", () => {
+          placeholder.style.display = "none";
+        });
+
+        function updatePlaceholder() {
+          if (signaturePad.isEmpty()) {
+            placeholder.style.display = "block";
+          } else {
+            placeholder.style.display = "none";
+          }
+        }
+
+        const selectAllCheckbox = document.getElementById("selectAll");
+        const classCheckboxes = document.querySelectorAll(".class-checkbox");
+
+        selectAllCheckbox.addEventListener("change", function () {
+          classCheckboxes.forEach((checkbox) => {
+            checkbox.checked = this.checked;
+          });
+        });
+
+        classCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const allChecked = Array.from(classCheckboxes).every(
+              (cb) => cb.checked,
+            );
+            const someChecked = Array.from(classCheckboxes).some(
+              (cb) => cb.checked,
+            );
+            selectAllCheckbox.checked = allChecked;
+            selectAllCheckbox.indeterminate = someChecked && !allChecked;
+          });
+        });
+
+        function getSelectedClasses() {
+          return Array.from(classCheckboxes)
+            .filter((cb) => cb.checked)
+            .map((cb) => cb.value);
+        }
+
+        document.getElementById("btnClear").addEventListener("click", () => {
+          signaturePad.clear();
+          placeholder.style.display = "block";
+        });
+
+        document.getElementById("btnSave").addEventListener("click", () => {
+          if (signaturePad.isEmpty()) {
+            alert("Silakan buat tanda tangan terlebih dahulu!");
+            return;
+          }
+
+          const selectedClasses = getSelectedClasses();
+          if (selectedClasses.length === 0) {
+            alert("Silakan pilih minimal satu kelas!");
+            return;
+          }
+
+          const data = signaturePad.toDataURL("image/png");
+          console.log("Signature saved:", data);
+          console.log("Selected classes:", selectedClasses);
+
+          // Preview the saved signature
+          document.getElementById("currentSignature").src = data;
+
+          // You can send this data to server here
+          // Example payload:
+          // { signature: data, classes: selectedClasses }
+
+          alert("Tanda tangan berhasil disimpan");
+        });
+
+        // File upload preview
+        document.getElementById("ttd").addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            // Update label
+            $(this).next(".custom-file-label").html(file.name);
+
+            // Preview uploaded image
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              document.getElementById("currentSignature").src =
+                event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
