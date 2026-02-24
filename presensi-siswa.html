@@ -368,8 +368,9 @@
                                           Pilih
                                         </option>
                                         <option value="hadir">Hadir</option>
-                                        <option value="sakit">Sakit</option>
-                                        <option value="izin">Izin</option>
+                                        <option value="tidakhadir">
+                                          Tidak Hadir
+                                        </option>
                                       </select>
                                     </td>
                                     <td></td>
@@ -396,8 +397,9 @@
                                         <option value="hadir" selected>
                                           Hadir
                                         </option>
-                                        <option value="sakit">Sakit</option>
-                                        <option value="izin">Izin</option>
+                                        <option value="tidakhadir">
+                                          Tidak Hadir
+                                        </option>
                                       </select>
                                     </td>
                                     <td>
@@ -405,20 +407,22 @@
                                       baru
                                     </td>
                                     <td>
-                                      <button
-                                        class="btn btn-sm btn-outline-warning"
-                                        data-toggle="modal"
-                                        data-target="#modalCatatanSiswa"
-                                        title="Edit Catatan"
-                                      >
-                                        <i class="fa fa-pencil"></i>
-                                      </button>
-                                      <button
-                                        class="btn btn-sm btn-outline-danger"
-                                        title="Hapus Catatan"
-                                      >
-                                        <i class="fa fa-trash"></i>
-                                      </button>
+                                      <div class="btn-group">
+                                        <button
+                                          class="btn btn-sm btn-outline-warning"
+                                          data-toggle="modal"
+                                          data-target="#modalCatatanSiswa"
+                                          title="Edit Catatan"
+                                        >
+                                          <i class="fa fa-pencil"></i>
+                                        </button>
+                                        <button
+                                          class="btn btn-sm btn-outline-danger"
+                                          title="Hapus Catatan"
+                                        >
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                      </div>
                                     </td>
                                   </tr>
                                   <tr>
@@ -434,8 +438,9 @@
                                         <option value="hadir" selected>
                                           Hadir
                                         </option>
-                                        <option value="sakit">Sakit</option>
-                                        <option value="izin">Izin</option>
+                                        <option value="tidakhadir">
+                                          Tidak Hadir
+                                        </option>
                                       </select>
                                     </td>
                                     <td>Sangat Rajin Sekali</td>
@@ -467,12 +472,13 @@
                                         id="presensi"
                                         class="custom-select"
                                       >
-                                        <option value="" disabled>Pilih</option>
-                                        <option value="hadir" selected>
-                                          Hadir
+                                        <option value="" selected disabled>
+                                          Pilih
                                         </option>
-                                        <option value="sakit">Sakit</option>
-                                        <option value="izin">Izin</option>
+                                        <option value="hadir">Hadir</option>
+                                        <option value="tidakhadir">
+                                          Tidak Hadir
+                                        </option>
                                       </select>
                                     </td>
                                     <td></td>
