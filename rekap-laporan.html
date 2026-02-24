@@ -514,7 +514,26 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>EZRA RAFA DANAR (RAFA)</td>
+                      <td>
+                        <span>EZRA RAFA DANAR (RAFA)</span>
+                        <div class="border-top border-secondary mt-3 py-3">
+                          <span class="font-weight-bold">Sesi: 30</span>
+                          <p>
+                            <b>Kehadiran</b>: 23
+                            <span class="font-weight-bold"
+                              >(75% - Tambahan sesi)</span
+                            >
+                          </p>
+                          <button
+                            class="btn btn-sm btn-info"
+                            data-toggle="modal"
+                            data-target="#TambahanSesiModal"
+                          >
+                            <i class="fa fa-plus"></i>
+                            Tambahan sesi
+                          </button>
+                        </div>
+                      </td>
                       <td>
                         <table class="table table-sm table-striped">
                           <tbody>
@@ -614,7 +633,26 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>NAURA NURU HAMIDAH (NAURA)</td>
+                      <td>
+                        <span>NAURA NURU HAMIDAH (NAURA)</span>
+                        <div class="border-top border-secondary mt-3 py-3">
+                          <span class="font-weight-bold">Sesi: 30</span>
+                          <p>
+                            <b>Kehadiran</b>: 3
+                            <span class="font-weight-bold"
+                              >(10l% - Tambahan sesi)</span
+                            >
+                          </p>
+                          <button
+                            class="btn btn-sm btn-info"
+                            data-toggle="modal"
+                            data-target="#TambahanSesiModal"
+                          >
+                            <i class="fa fa-plus"></i>
+                            Tambahan sesi
+                          </button>
+                        </div>
+                      </td>
                       <td>
                         <table class="table table-sm table-striped">
                           <tbody>
@@ -721,6 +759,50 @@
         </section>
       </div>
 
+      <div class="modal fade" tabindex="-1" id="TambahanSesiModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambahan sesi</h5>
+              <button type="button" data-dismiss="modal" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="flex flex-column">
+                <form action="" id="form-catatan-remidi">
+                  <div class="form-group">
+                    <label for="">Jumlah Sesi Tambahan</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="jumlah tambahan sesi"
+                    />
+                    <small class="form-text text-muted"
+                      >Note: Jika ingin membatalkan tambahan sesi hapus data
+                      secara manual lalu simpan.</small
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="">Catatan Tambahan</label>
+                    <textarea name="" id="tiny"></textarea>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="button" class="btn btn-primary">Tambah sesi</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="modal fade" id="previewRaporModal">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -1432,6 +1514,21 @@ Salam LKP LEAP English & Digital Class Surabaya</textarea
       }
       $(document).ready(function () {
         lucide.createIcons();
+        tinymce.init({
+          selector: "textarea#tiny",
+          height: 200,
+          menubar: false,
+          uploadcare_public_key: "0d2c6f775e7f98a80684",
+        });
+        $(document).on("focusin", function (e) {
+          if (
+            $(e.target).closest(
+              ".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root",
+            ).length
+          ) {
+            e.stopImmediatePropagation();
+          }
+        });
         $("#form-ketuntasan").hide();
         $("#menu-ketuntasan").change(function () {
           if ($(this).val() === "4") {
