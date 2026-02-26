@@ -417,7 +417,6 @@
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
           <div class="container-fluid">
             <div class="row mb-2 justify-content-end">
@@ -432,10 +431,8 @@
               </div>
             </div>
           </div>
-          <!-- /.container-fluid -->
         </section>
 
-        <!-- Main content -->
         <section class="content">
           <div class="container-fluid">
             <div class="card card-outline card-primary mb-3">
@@ -487,25 +484,51 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Daftar Siswa</h3>
-                <div class="card-tools">
+                <div
+                  class="card-tools d-flex justify-content-between align-items-center"
+                  style="gap: 10px"
+                >
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-success btn-sm dropdown-toggle"
+                      data-toggle="dropdown"
+                      type="button"
+                      aria-expanded="false"
+                    >
+                      <i class="fas fa-file-excel"></i> Excel Template
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <h6 class="dropdown-header">Template Excel</h6>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <i class="fa fa-file-excel"></i>
+                          Template nilai
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item accent-blue" href="#">
+                          <i class="fa fa-file-excel"></i>
+                          Template Remidi
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <button
+                    class="btn btn-info btn-sm"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#modalUploadNilai"
+                  >
+                    <i class="fas fa-upload"></i> Upload Nilai
+                  </button>
                   <button
                     class="btn btn-primary btn-sm"
                     data-toggle="modal"
                     data-target="#previewSiswaRemidi"
                   >
                     <i class="fas fa-users"></i> Preview Siswa Remidi
-                  </button>
-                  <button class="btn btn-warning btn-sm">
-                    <i class="fas fa-file-excel"></i> Excel Template Remidi
-                  </button>
-                  <button class="btn btn-success btn-sm">
-                    <i class="fas fa-file-excel"></i> Excel Template
-                  </button>
-                  <button class="btn btn-primary btn-sm">
-                    <i class="fas fa-upload"></i> Upload Nilai Remidi
-                  </button>
-                  <button class="btn btn-info btn-sm">
-                    <i class="fas fa-upload"></i> Upload Nilai
                   </button>
                 </div>
               </div>
@@ -776,7 +799,7 @@
             </div>
             <div class="modal-body">
               <div class="flex flex-column">
-                <form action="" id="form-catatan-remidi">
+                <form action="" id="form-tambahan-sesi">
                   <div class="form-group">
                     <label for="">Jumlah Sesi Tambahan</label>
                     <input
@@ -1446,6 +1469,69 @@ Salam LKP LEAP English & Digital Class Surabaya</textarea
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="modalUploadNilai">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Upload Nilai</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" id="form-upload-nilai">
+                <div class="form-group">
+                  <label>Jenis File Upload (default: nilai normal)</label>
+                  <select class="form-control">
+                    <option value="normal">Upload nilai normal</option>
+                    <option value="remidi">Upload nilai remidih</option>
+                  </select>
+                  <span id="emailHelp" class="form-text text-muted">
+                    Jenis file yang diupload harus berupa file Excel (.xlsx)
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="exampleInputFile"
+                      />
+                      <label class="custom-file-label" for="exampleInputFile"
+                        >Pilih file Excel (.xlsx)</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Batal
+              </button>
+              <button
+                type="submit"
+                class="btn btn-sm btn-primary"
+                form="form-upload-nilai"
+              >
+                <i class="fas fa-upload"></i> Upload
+              </button>
             </div>
           </div>
         </div>
