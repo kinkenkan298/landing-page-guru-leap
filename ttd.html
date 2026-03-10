@@ -172,12 +172,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./ttd.html" class="nav-link">
-                  <i data-lucide="signature"></i>
-                  <p>Tanda Tangan Guru</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="./rapor.html" class="nav-link">
                   <i data-lucide="notebook-pen"></i>
                   <p>Rekap Rapor Siswa</p>
@@ -282,59 +276,6 @@
                             </button>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label class="form-label font-weight-bold">
-                            Pilih Kelas yang Diajarkan
-                          </label>
-                          <div
-                            class="border rounded p-2"
-                            style="max-height: 200px; overflow-y: auto"
-                          >
-                            <div class="custom-control custom-checkbox mb-2">
-                              <input
-                                type="checkbox"
-                                class="custom-control-input"
-                                id="selectAll"
-                              />
-                              <label
-                                class="custom-control-label font-weight-bold"
-                                for="selectAll"
-                              >
-                                Pilih Semua
-                              </label>
-                            </div>
-                            <hr class="my-2" />
-                            <div class="row">
-                              <div
-                                class="col-12 d-flex flex-wrap"
-                                style="gap: 20px"
-                              >
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input class-checkbox"
-                                    id="PP89"
-                                    value="PP89"
-                                  />
-                                  <label class="custom-control-label" for="PP89"
-                                    >Coding 1C Curious Creators Wed 5-6</label
-                                  >
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input class-checkbox"
-                                    id="PP90"
-                                    value="PP90"
-                                  />
-                                  <label class="custom-control-label" for="PP90"
-                                    >Coding 1C Curious Creators Tue 6-7</label
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
@@ -419,11 +360,9 @@
       $(document).ready(function () {
         lucide.createIcons();
 
-        // Canvas and SignaturePad setup
         const canvas = document.getElementById("canvasTTDManual");
         const placeholder = document.getElementById("canvasPlaceholder");
 
-        // Resize canvas to fill container while maintaining proper drawing
         function resizeCanvas() {
           const container = canvas.parentElement;
           const ratio = Math.max(window.devicePixelRatio || 1, 1);
@@ -436,7 +375,6 @@
           const ctx = canvas.getContext("2d");
           ctx.scale(ratio, ratio);
 
-          // Clear the canvas after resize
           signaturePad.clear();
         }
 
@@ -447,13 +385,10 @@
           maxWidth: 3,
         });
 
-        // Initial resize
         resizeCanvas();
 
-        // Resize on window resize
         window.addEventListener("resize", resizeCanvas);
 
-        // Hide placeholder when drawing starts
         signaturePad.addEventListener("beginStroke", () => {
           placeholder.style.display = "none";
         });
@@ -465,35 +400,6 @@
             placeholder.style.display = "none";
           }
         }
-
-        const selectAllCheckbox = document.getElementById("selectAll");
-        const classCheckboxes = document.querySelectorAll(".class-checkbox");
-
-        selectAllCheckbox.addEventListener("change", function () {
-          classCheckboxes.forEach((checkbox) => {
-            checkbox.checked = this.checked;
-          });
-        });
-
-        classCheckboxes.forEach((checkbox) => {
-          checkbox.addEventListener("change", function () {
-            const allChecked = Array.from(classCheckboxes).every(
-              (cb) => cb.checked,
-            );
-            const someChecked = Array.from(classCheckboxes).some(
-              (cb) => cb.checked,
-            );
-            selectAllCheckbox.checked = allChecked;
-            selectAllCheckbox.indeterminate = someChecked && !allChecked;
-          });
-        });
-
-        function getSelectedClasses() {
-          return Array.from(classCheckboxes)
-            .filter((cb) => cb.checked)
-            .map((cb) => cb.value);
-        }
-
         document.getElementById("btnClear").addEventListener("click", () => {
           signaturePad.clear();
           placeholder.style.display = "block";
@@ -505,22 +411,8 @@
             return;
           }
 
-          const selectedClasses = getSelectedClasses();
-          if (selectedClasses.length === 0) {
-            alert("Silakan pilih minimal satu kelas!");
-            return;
-          }
-
           const data = signaturePad.toDataURL("image/png");
-          console.log("Signature saved:", data);
-          console.log("Selected classes:", selectedClasses);
-
-          // Preview the saved signature
           document.getElementById("currentSignature").src = data;
-
-          // You can send this data to server here
-          // Example payload:
-          // { signature: data, classes: selectedClasses }
 
           alert("Tanda tangan berhasil disimpan");
         });
