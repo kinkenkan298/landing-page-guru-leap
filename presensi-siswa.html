@@ -336,7 +336,10 @@
                           <div class="card-header">
                             <h2 class="card-title">Data Siswa</h2>
                             <div class="card-tools">
-                              <button class="btn btn-info btn-sm">
+                              <button
+                                class="btn btn-info btn-sm"
+                                id="toggleCheckAll"
+                              >
                                 <i class="fa fa-check"></i>
                                 CHECK ALL
                               </button>
@@ -357,21 +360,12 @@
                                 <tbody>
                                   <tr>
                                     <td>TRIAL01</td>
-                                    <td></td>
+                                    <td class="waktu"></td>
                                     <td>
-                                      <select
-                                        name="presensi"
-                                        id="presensi"
-                                        class="custom-select"
-                                      >
-                                        <option value="" selected disabled>
-                                          Pilih
-                                        </option>
-                                        <option value="hadir">Hadir</option>
-                                        <option value="tidakhadir">
-                                          Tidak Hadir
-                                        </option>
-                                      </select>
+                                      <input
+                                        type="checkbox"
+                                        class="presensi-checkbox"
+                                      />
                                     </td>
                                     <td></td>
                                     <td>
@@ -386,21 +380,15 @@
                                   </tr>
                                   <tr>
                                     <td>QO QO</td>
-                                    <td>23 January 2026 10:46:26</td>
+                                    <td class="waktu">
+                                      23 January 2026 10:46:26
+                                    </td>
                                     <td>
-                                      <select
-                                        name="presensi"
-                                        id="presensi"
-                                        class="custom-select"
-                                      >
-                                        <option value="" disabled>Pilih</option>
-                                        <option value="hadir" selected>
-                                          Hadir
-                                        </option>
-                                        <option value="tidakhadir">
-                                          Tidak Hadir
-                                        </option>
-                                      </select>
+                                      <input
+                                        type="checkbox"
+                                        class="presensi-checkbox"
+                                        checked
+                                      />
                                     </td>
                                     <td>
                                       Siswa Sangat Bersemangat membahasa materi
@@ -427,21 +415,15 @@
                                   </tr>
                                   <tr>
                                     <td>Xavier Tanaya Gunawan</td>
-                                    <td>23 January 2026 10:46:26</td>
+                                    <td class="waktu">
+                                      23 January 2026 10:46:26
+                                    </td>
                                     <td>
-                                      <select
-                                        name="presensi"
-                                        id="presensi"
-                                        class="custom-select"
-                                      >
-                                        <option value="" disabled>Pilih</option>
-                                        <option value="hadir" selected>
-                                          Hadir
-                                        </option>
-                                        <option value="tidakhadir">
-                                          Tidak Hadir
-                                        </option>
-                                      </select>
+                                      <input
+                                        type="checkbox"
+                                        class="presensi-checkbox"
+                                        checked
+                                      />
                                     </td>
                                     <td>Sangat Rajin Sekali</td>
                                     <td>
@@ -465,21 +447,12 @@
                                   </tr>
                                   <tr>
                                     <td>Varellino Wildantara</td>
-                                    <td></td>
+                                    <td class="waktu"></td>
                                     <td>
-                                      <select
-                                        name="presensi"
-                                        id="presensi"
-                                        class="custom-select"
-                                      >
-                                        <option value="" selected disabled>
-                                          Pilih
-                                        </option>
-                                        <option value="hadir">Hadir</option>
-                                        <option value="tidakhadir">
-                                          Tidak Hadir
-                                        </option>
-                                      </select>
+                                      <input
+                                        type="checkbox"
+                                        class="presensi-checkbox"
+                                      />
                                     </td>
                                     <td></td>
                                     <td>
@@ -580,9 +553,61 @@
           menubar: false,
           uploadcare_public_key: "0d2c6f775e7f98a80684",
         });
+
         lucide.createIcons();
         $("#tags").select2({
           theme: "bootstrap4",
+        });
+
+        $(".presensi-checkbox").on("change", function () {
+          const checked = $(this).is(":checked");
+          const waktuCell = $(this).closest("tr").find(".waktu");
+          if (checked) {
+            const now = new Date();
+            const formatted =
+              now.toLocaleDateString("id-ID", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              }) +
+              " " +
+              now.toLocaleTimeString("id-ID", {
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+              });
+            waktuCell.text(formatted);
+          } else {
+            waktuCell.text("");
+          }
+        });
+        $("#toggleCheckAll").on("click", function () {
+          const allChecked =
+            $(".presensi-checkbox").length ===
+            $(".presensi-checkbox:checked").length;
+          if (allChecked) {
+            $(".presensi-checkbox").prop("checked", false).trigger("change");
+            $(this).find("i").removeClass("fa-check").addClass("fa-times");
+            $(this).text(" UNCHECK ALL").prepend('<i class="fa fa-times"></i>');
+          } else {
+            $(".presensi-checkbox").prop("checked", true).trigger("change");
+            $(this).find("i").removeClass("fa-times").addClass("fa-check");
+            $(this).text(" CHECK ALL").prepend('<i class="fa fa-check"></i>');
+          }
+        });
+
+        $(".presensi-checkbox").on("change", function () {
+          const btn = $("#toggleCheckAll");
+          const allChecked =
+            $(".presensi-checkbox").length ===
+            $(".presensi-checkbox:checked").length;
+          if (allChecked) {
+            btn.find("i").removeClass("fa-check").addClass("fa-times");
+            btn.text(" UNCHECK ALL").prepend('<i class="fa fa-times"></i>');
+          } else {
+            btn.find("i").removeClass("fa-times").addClass("fa-check");
+            btn.text(" CHECK ALL").prepend('<i class="fa fa-check"></i>');
+          }
         });
       });
     </script>
